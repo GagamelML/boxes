@@ -81,13 +81,13 @@ Whole box (early version still missing grip rail on the lid):
         Boxes.__init__(self)
         self.addSettingsArgs(edges.FingerJointSettings)
         self.argparser.add_argument(
-            "--deckhight",  action="store", type=float, default=65,
+            "--deckheight",  action="store", type=float, default=65,
             help="Hight of one stack of cards")
         self.argparser.add_argument(
             "--cardwidth",  action="store", type=float, default=68,
             help="Width of one card")
         self.argparser.add_argument(
-            "--cardhight", action="store", type=float, default=92,
+            "--cardheight", action="store", type=float, default=92,
             help="Hight of one card")
         self.argparser.add_argument(
             "--num",  action="store", type=int, default=3,
@@ -95,7 +95,7 @@ Whole box (early version still missing grip rail on the lid):
 
     @property
     def boxwidth(self):
-        return self.num * (self.deckhight + self.thickness) + self.thickness
+        return self.num * (self.deckheight + self.thickness) + self.thickness
 
     @property
     def boxdepth(self):
@@ -103,11 +103,11 @@ Whole box (early version still missing grip rail on the lid):
 
     @property
     def h(self):
-        return self.cardhight
+        return self.cardheight
 
     def divider_bottom(self):
         t = self.thickness
-        c = self.deckhight
+        c = self.deckheight
         y = self.boxdepth
 
         for i in range(1, self.num):
@@ -115,8 +115,8 @@ Whole box (early version still missing grip rail on the lid):
 
     def divider_back_and_front(self):
         t = self.thickness
-        c = self.deckhight
-        y = self.cardhight
+        c = self.deckheight
+        y = self.cardheight
         for i in range(1, self.num):
             self.fingerHolesAt(0.5*t + (c+t)*i, 0, y, 90)
 
@@ -126,7 +126,7 @@ Whole box (early version still missing grip rail on the lid):
 
         x = self.boxwidth
         y = self.boxdepth
-        c = self.deckhight
+        c = self.deckheight
 
         s = InsetEdgeSettings(thickness=t)
         p = InsetEdge(self, s)
