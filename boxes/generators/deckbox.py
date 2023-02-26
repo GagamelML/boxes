@@ -93,6 +93,7 @@ Whole box (early version still missing grip rail on the lid):
             "--num",  action="store", type=int, default=3,
             help="number of compartments")
 
+
     @property
     def boxwidth(self):
         return self.num * (self.deckheight + self.thickness) + self.thickness
